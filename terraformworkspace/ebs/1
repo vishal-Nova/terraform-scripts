@@ -1,0 +1,21 @@
+provider "aws" {                                                           
+  region = "us-east-1"                                                                                                                              
+}                                                                          
+
+resource "aws_ebs_volume" "example" {
+  availability_zone = "us-east-1a"
+  size              = 20
+
+  tags = {
+    Name = "vishalshukla"
+  }
+}
+
+resource "aws_ebs_snapshot" "example_snapshot" {
+  volume_id = aws_ebs_volume.example.id
+
+  tags = {
+    Name = "vishalshukla_snap"
+  }
+}
+
